@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.fse</groupId>
-	<artifactId>ReturnOrderManagementSystem</artifactId>
+	<artifactId>ReturnOrderManagementSystem-EurekaServer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>ReturnOrderManagementSystem-EurekaServer</name>
 	<description>Demo project for Spring Boot</description>
@@ -47,6 +47,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			
 		</plugins>
 	</build>
 
