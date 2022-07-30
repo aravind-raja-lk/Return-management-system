@@ -1,0 +1,24 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-ReturnOrderManagementSystemApplicationPackagingAndDelivery<ReturnOrderManagementSystem-PackagingAndDelivery>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.fse.ReturnOrderManagementSystem.ReturnOrderManagementSystemApplicationPackagingAndDelivery",
+            "projectName": "ReturnOrderManagementSystem-PackagingAndDelivery",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-ReturnOrderManagementSystemApiGetWayApplication<ReturnOrderManagementSystem>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.fse.ReturnOrderManagementSystem.ReturnOrderManagementSystemApiGetWayApplication",
+            "projectName": "ReturnOrderManagementSystem",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
