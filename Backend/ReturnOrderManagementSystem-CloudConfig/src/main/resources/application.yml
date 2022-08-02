@@ -8,6 +8,6 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/ashwanikumarshaw/ROM-Config-Server
+          uri: https://github.com/aravind-raja-lk/cloud-cofig.git
           clone-on-start: true
           skipSslValidation: true
