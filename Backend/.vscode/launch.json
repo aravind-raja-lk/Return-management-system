@@ -2,6 +2,27 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch ReturnOrderManagementSystemApplicationAuthorization",
+            "request": "launch",
+            "mainClass": "com.fse.Authorization.ReturnOrderManagementSystemApplicationAuthorization",
+            "projectName": "ReturnOrderManagementSystem-Authorization"
+        },
+        {
+            "type": "java",
+            "name": "Launch ReturnOrderManagementSystemApplicationComponentProcessing",
+            "request": "launch",
+            "mainClass": "com.fse.ReturnOrderManagementSystem.ReturnOrderManagementSystemApplicationComponentProcessing",
+            "projectName": "ReturnOrderManagementSystem-ComponentProcessing"
+        },
+        {
+            "type": "java",
+            "name": "Launch ReturnOrderManagementSystemEurekaServerApplication",
+            "request": "launch",
+            "mainClass": "com.fse.ReturnOrderManagementSystem.ReturnOrderManagementSystemEurekaServerApplication",
+            "projectName": "ReturnOrderManagementSystem-EurekaServer"
+        },
+        {
+            "type": "java",
             "name": "Spring Boot-ReturnOrderManagementSystemApplicationPackagingAndDelivery<ReturnOrderManagementSystem-PackagingAndDelivery>",
             "request": "launch",
             "cwd": "${workspaceFolder}",
@@ -17,6 +38,16 @@
             "cwd": "${workspaceFolder}",
             "mainClass": "com.fse.ReturnOrderManagementSystem.ReturnOrderManagementSystemApiGetWayApplication",
             "projectName": "ReturnOrderManagementSystem",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-ReturnOrderManagementSystemApiGetWayApplication<ReturnOrderManagementSystem-APIGetWay>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.fse.ReturnOrderManagementSystem.ReturnOrderManagementSystemApiGetWayApplication",
+            "projectName": "ReturnOrderManagementSystem-APIGetWay",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
         }
