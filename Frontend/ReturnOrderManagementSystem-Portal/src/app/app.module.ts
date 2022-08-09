@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { RestapiService } from './restapi.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'
+import { AuthGuardService } from 'src/auth-guard.service';
 
 
 @NgModule({
@@ -24,7 +25,7 @@ import { HttpClientModule } from '@angular/common/http'
     HttpClientModule,
 
   ],
-  providers: [RestapiService],
+  providers: [RestapiService,AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -2,11 +2,33 @@
     border-color: transparent;
 }
 
+
 #list1 .form-control:focus {
     border-color: transparent;
     box-shadow: none;
+    border-color: red;
 }
 
 #list1 .select-input.form-control[readonly]:not([disabled]) {
-    background-color: #fbfbfb;
+    background-color: #915353;
 }
+
+/* input, select, textarea{
+    color: #ff0000;
+    border: 2px solid red;
+  border-radius: 4px;
+  border: 2px solid red;
+  border-radius: 4px;
+} */
+
+
+input.ng-pristine
+{
+  color:red;
+ 
+}
+input.ng-dirty
+{
+  color:green
+}
+/* input.input-box, textarea { background: cyan; } */

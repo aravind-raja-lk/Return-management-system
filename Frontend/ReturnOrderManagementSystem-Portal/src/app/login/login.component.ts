@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthVarService } from '../auth-var.service';
+import { AppConfig } from '../Global/AppConfig';
 import { RestapiService } from '../restapi.service';
 import { User } from '../user';
 
@@ -33,6 +34,7 @@ export class LoginComponent implements OnInit {
             data: { "token": response.jwtToken, "userName": this.user.userName }
           }
         });
+        AppConfig.Islogin =true;
       },
       error => {
         console.log("Exception Occured" + error)

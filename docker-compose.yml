@@ -1,19 +1,19 @@
-version: '2'
+version: '3'
 services:
   EUREKA-SERVER:
     container_name: eureka-server
-    build: ReturnOrderManagementSystem-EurekaServer
-    image: eurekaserver
+    #build: Backend/ReturnOrderManagementSystem-EurekaServer
+    image: aravraja/eurekaserver
     
     ports:
       - "8761:8761"
   API-GATEWAY:
     container_name: apigateway
-    build: ReturnOrderManagementSystem-APIGetWay
-    image: apigateway
+    #build: Backend/ReturnOrderManagementSystem-APIGetWay
+    image: aravraja/apigateway
     
     ports:
-      - "9191:9191" 
+      - "80:9191" 
     environment:
        SPRING_CLOUD_CONFIG_URI: http://CONFIG-SERVER:9999
        SPRING_APPLICATION_JSON: '{"eureka":{"client":{"serviceUrl":{"defaultZone":"http://EUREKA-SERVER:8761/eureka"}}}}'
@@ -25,8 +25,8 @@ services:
     #   eureka.client.serviceUrl.defaultZone: http://eureka-server:8761/eureka  
   CONFIG-SERVER:
     container_name: cloud
-    build: ReturnOrderManagementSystem-CloudConfig
-    image: cloud
+    #build: Backend/ReturnOrderManagementSystem-CloudConfig
+    image: aravraja/cloud
     
     ports:
       - "9999:9999" 
@@ -39,14 +39,14 @@ services:
 
   AUTHORIZATION-SERVICE:
     container_name: auth
-    build: ReturnOrderManagementSystem-Authorizatin
-    image: auth
+    #build: Backend/ReturnOrderManagementSystem-Authorizatin
+    image: aravraja/auth
     
     ports:
       - "9091:9091" 
     environment:
        SPRING_CLOUD_CONFIG_URI: http://CONFIG-SERVER:9999 
-       SPRING_APPLICATION_JSON: '{"eureka":{"client":{"serviceUrl":{"defaultZone":"http://eureka-server:8761/eureka"}}}}'
+       SPRING_APPLICATION_JSON: '{"eureka":{"client":{"serviceUrl":{"defaultZone":"http://EUREKA-SERVER:8761/eureka"}}}}'
      
     depends_on:
       - EUREKA-SERVER   
@@ -54,14 +54,14 @@ services:
       - CONFIG-SERVER
   COMPONENT-PROCESSING:
     container_name: comp-process
-    build: ReturnOrderManagementSystem-ComponentProcessing
-    image: comp-process
+    #build: Backend/ReturnOrderManagementSystem-ComponentProcessing
+    image: aravraja/comp-process
     
     ports:
       - "9090:9090" 
     environment:
        SPRING_CLOUD_CONFIG_URI: http://CONFIG-SERVER:9999 
-       SPRING_APPLICATION_JSON: '{"eureka":{"client":{"serviceUrl":{"defaultZone":"http://eureka-server:8761/eureka"}}}}'
+       SPRING_APPLICATION_JSON: '{"eureka":{"client":{"serviceUrl":{"defaultZone":"http://EUREKA-SERVER:8761/eureka"}}}}'
      
     depends_on:
       - EUREKA-SERVER   
@@ -69,14 +69,14 @@ services:
       - CONFIG-SERVER   
   PACKAGING-AND-DELIVERY:
     container_name: packaging-and-delivery
-    build: ReturnOrderManagementSystem-PackagingAndDelivery
-    image: packaging-and-delivery
+    #build: Backend/ReturnOrderManagementSystem-PackagingAndDelivery
+    image: aravraja/packaging-and-delivery
     
     ports:
       - "9092:9092" 
     environment:
        SPRING_CLOUD_CONFIG_URI: http://CONFIG-SERVER:9999 
-       SPRING_APPLICATION_JSON: '{"eureka":{"client":{"serviceUrl":{"defaultZone":"http://eureka-server:8761/eureka"}}}}'
+       SPRING_APPLICATION_JSON: '{"eureka":{"client":{"serviceUrl":{"defaultZone":"http://EUREKA-SERVER:8761/eureka"}}}}'
      
     depends_on:
       - EUREKA-SERVER   

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { User } from './user';
 import { ProcessDetail } from './process-detail';
 
+import { AppConfig } from './Global/AppConfig';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,7 @@ export class RestapiService {
 
     let httpHeaders = new HttpHeaders();
     httpHeaders.set('Content-Type', 'application/json');
-    return this.http.post<any>("http://localhost:9191/auth/login", request, { headers: httpHeaders });//http://localhost:9191/auth/login9094
+    return this.http.post<any>(AppConfig.Login, request, { headers: httpHeaders });//http://localhost:9191/auth/login9094
   }
 
 
@@ -41,7 +42,7 @@ export class RestapiService {
       contactNumber: processDetail.contactNumber,
       isPriorityRequest: processDetail.isPriorityRequest
     };//http://localhost:9090/return/ProcessDetail
-    return this.http.request<any>("POST", "http://localhost:9191/return/ProcessDetail", {
+    return this.http.request<any>("POST", AppConfig.ProcessDetail, {
       body: request,
       headers: httpHeaders,
       responseType: 'json'
@@ -54,7 +55,7 @@ export class RestapiService {
       .set('Accept', 'application/json')
       .set('Authorization', `Bearer ${jwtToken}`);
 
-    return this.http.post<any>("http://localhost:9191/return/CompleteProcessing/" + requestId + "/" + cardNumber + "/" + creditLimit + "/" + processingCharge, null, {
+    return this.http.post<any>(AppConfig.CompleteProcesing + requestId + "/" + cardNumber + "/" + creditLimit + "/" + processingCharge, null, {
       headers: httpHeaders,
     });
   }
@@ -63,7 +64,7 @@ export class RestapiService {
     let httpHeaders = new HttpHeaders()
       .set('Accept', 'application/json')
       .set('Authorization', `Bearer ${jwtToken}`);
-    return this.http.get<any>("http://localhost:9191/return/ProcessDetail/" + userName, {
+    return this.http.get<any>(AppConfig.ProcessDetail+"/" + userName, {
 
       headers: httpHeaders,
       responseType: 'json'

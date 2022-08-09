@@ -1,0 +1,17 @@
+version: 0.2
+phases:
+  build:
+    commands:
+      - echo "$DOCKER_PW" | docker login -u "$DOCKER_ID" --password-stdin
+      - docker-compose -f dck.yml build
+      - docker push aravraja/eurekaserver
+      - docker push aravraja/apigateway
+      - docker push aravraja/cloud
+      - docker push aravraja/auth
+      - docker push aravraja/comp-process
+      - docker push aravraja/packaging-and-delivery
+artifacts:
+  files:
+    - '**/*'    
+     
+      
