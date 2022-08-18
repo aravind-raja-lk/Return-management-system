@@ -4,12 +4,20 @@ phases:
     commands:
       - echo "$DOCKER_PW" | docker login -u "$DOCKER_ID" --password-stdin
       - docker-compose -f dck.yml build
-      - docker push aravraja/eurekaserver
-      - docker push aravraja/apigateway
-      - docker push aravraja/cloud
-      - docker push aravraja/auth
-      - docker push aravraja/comp-process
-      - docker push aravraja/packaging-and-delivery
+      - aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/y8y1h0j5
+      - docker tag aravraja/eurekaserver:latest public.ecr.aws/y8y1h0j5/aravraja/eurekaserver:latest
+      - docker tag aravraja/apigateway:latest public.ecr.aws/y8y1h0j5/aravraja/apigateway:latest
+      - docker tag aravraja/cloud:latest public.ecr.aws/y8y1h0j5/aravraja/cloud:latest
+      - docker tag aravraja/auth:latest public.ecr.aws/y8y1h0j5/aravraja/auth:latest
+      - docker tag aravraja/comp-process:latest public.ecr.aws/y8y1h0j5/aravraja/comp-process:latest
+      - docker tag aravraja/packaging-and-delivery:latest public.ecr.aws/y8y1h0j5/aravraja/packaging-and-delivery:latest
+      - docker images
+      - docker push public.ecr.aws/y8y1h0j5/aravraja/eurekaserver:latest
+      - docker push public.ecr.aws/y8y1h0j5/aravraja/apigateway:latest
+      - docker push public.ecr.aws/y8y1h0j5/aravraja/cloud:latest
+      - docker push public.ecr.aws/y8y1h0j5/aravraja/auth:latest
+      - docker push public.ecr.aws/y8y1h0j5/aravraja/comp-process:latest
+      - docker push public.ecr.aws/y8y1h0j5/aravraja/packaging-and-delivery:latest
 artifacts:
   files:
     - '**/*'    

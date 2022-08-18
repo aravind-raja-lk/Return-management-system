@@ -3,14 +3,14 @@ services:
   EUREKA-SERVER:
     container_name: eureka-server
     #build: Backend/ReturnOrderManagementSystem-EurekaServer
-    image: aravraja/eurekaserver
+    image: public.ecr.aws/y8y1h0j5/aravraja/eurekaserver
     
     ports:
       - "8761:8761"
   API-GATEWAY:
     container_name: apigateway
     #build: Backend/ReturnOrderManagementSystem-APIGetWay
-    image: aravraja/apigateway
+    image: public.ecr.aws/y8y1h0j5/aravraja/apigateway
     
     ports:
       - "80:9191" 
@@ -26,7 +26,7 @@ services:
   CONFIG-SERVER:
     container_name: cloud
     #build: Backend/ReturnOrderManagementSystem-CloudConfig
-    image: aravraja/cloud
+    image: public.ecr.aws/y8y1h0j5/aravraja/cloud
     
     ports:
       - "9999:9999" 
@@ -40,7 +40,7 @@ services:
   AUTHORIZATION-SERVICE:
     container_name: auth
     #build: Backend/ReturnOrderManagementSystem-Authorizatin
-    image: aravraja/auth
+    image: public.ecr.aws/y8y1h0j5/aravraja/auth
     
     ports:
       - "9091:9091" 
@@ -55,7 +55,7 @@ services:
   COMPONENT-PROCESSING:
     container_name: comp-process
     #build: Backend/ReturnOrderManagementSystem-ComponentProcessing
-    image: aravraja/comp-process
+    image: public.ecr.aws/y8y1h0j5/aravraja/comp-process
     
     ports:
       - "9090:9090" 
@@ -70,7 +70,7 @@ services:
   PACKAGING-AND-DELIVERY:
     container_name: packaging-and-delivery
     #build: Backend/ReturnOrderManagementSystem-PackagingAndDelivery
-    image: aravraja/packaging-and-delivery
+    image: public.ecr.aws/y8y1h0j5/aravraja/packaging-and-delivery
     
     ports:
       - "9092:9092" 
