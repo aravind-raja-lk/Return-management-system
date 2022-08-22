@@ -1,0 +1,7 @@
+version: '3'
+services:
+ API-GATEWAY:
+    container_name: packaging-and-delivery
+    build: .
+    image: aravraja/packaging-and-delivery
+    

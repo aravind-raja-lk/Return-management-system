@@ -1,0 +1,7 @@
+version: '3'
+services:
+ API-GATEWAY:
+    container_name: comp-process
+    build: .
+    image: aravraja/comp-process
+    

@@ -1,0 +1,69 @@
+server:
+  port: 9191
+
+spring:
+  application:
+    name: API-GATEWAY
+  cloud:
+    gateway:
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Origin
+      globalcors:
+        add-to-simple-url-handler-mapping: true
+        corsConfigurations:
+          '[/**]':
+            allowed-origins: "*"
+            allowed-methods: "*"
+            allowed-headers: "*"
+      routes:
+        - id: AUTHORIZATION-SERVICE
+          uri: http://AUTH-BAL-2079499963.us-east-1.elb.amazonaws.com
+          predicates:
+            - Path=/auth/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: AUTHORIZATION-SERVICE
+                fallbackuri: forward:/authFallback
+                
+        - id: COMPONENT-PROCESSING
+          uri: http://COMP-LB-1999562680.us-east-1.elb.amazonaws.com
+          predicates:
+            - Path=/return/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: COMPONENT-PROCESSING
+                fallbackuri: forward:/returnFallback
+                
+        - id: PACKAGING-AND-DELIVERY
+          uri: http://PACK-802397046.us-east-1.elb.amazonaws.com
+          predicates:
+            - Path=/GetPackagingDeliveryCharge/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: PACKAGING-AND-DELIVERY
+                fallbackuri: forward:/packagingAndDeliveryFallback
+
+
+hystrix:
+  command:
+    fallbackcmd:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 4000
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka-lb-1611713706.us-east-1.elb.amazonaws.com/eureka     
